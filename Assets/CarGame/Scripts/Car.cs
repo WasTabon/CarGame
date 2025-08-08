@@ -1,6 +1,6 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public enum CarType
 {
@@ -20,6 +20,9 @@ public enum PartType
 
 public class Car : MonoBehaviour
 {
+    public event Action OnPartOpen;
+    public event Action OnPartClose;
+    
     public CarType carType;
 
     [SerializeField] private float _openSpeed;
@@ -56,6 +59,7 @@ public class Car : MonoBehaviour
 
         part.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.OutBack);
         openedPart = part;
+        OnPartOpen?.Invoke();
     }
 
 }
