@@ -34,6 +34,9 @@ public class CarsController : MonoBehaviour
 
     public void OpenElement()
     {
+        if (currentCar == null)
+            return;
+        
         switch (CameraSwitcheController.Instance.CurrentIndex)
         {
             case 0:
