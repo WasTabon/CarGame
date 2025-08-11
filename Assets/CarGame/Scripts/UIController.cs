@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -118,6 +119,7 @@ public class UIController : MonoBehaviour
         {
             descriptionText.text = issue.description;
             _fixScene = issue.sceneName;
+            _issuePanel.gameObject.SetActive(true);
         }
         else
         {
@@ -157,7 +159,28 @@ public class UIController : MonoBehaviour
     
     public void LoadFixScene()
     {
-        SceneManager.LoadScene(_fixScene, LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(_fixScene));
+        StartCoroutine(LoadAndActivateScene(_fixScene));
+    }
+
+    private IEnumerator LoadAndActivateScene(string sceneName)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+        // Ждем пока сцена загрузится полностью
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        Scene loadedScene = SceneManager.GetSceneByName(sceneName);
+
+        if (loadedScene.IsValid() && loadedScene.isLoaded)
+        {
+            SceneManager.SetActiveScene(loadedScene);
+        }
+        else
+        {
+            Debug.LogError($"Scene {sceneName} failed to load or is invalid");
+        }
     }
 }

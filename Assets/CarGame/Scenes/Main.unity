@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 113901682}
   - component: {fileID: 113901681}
   - component: {fileID: 113901680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightDoorScanButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1287,7 +1287,7 @@ GameObject:
   - component: {fileID: 142090411}
   - component: {fileID: 142090413}
   - component: {fileID: 142090412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2029,8 +2029,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178313464}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.22166464, y: 0.001853103, z: -0.00045724708, w: -0.97512114}
-  m_LocalPosition: {x: 6.949114, y: 2.849184, z: -4.523723}
+  m_LocalRotation: {x: 0.00245633, y: 0.9737207, z: -0.22749826, w: 0.010323317}
+  m_LocalPosition: {x: 6.9089336, y: 2.1722605, z: 3.1769319}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3525,7 +3525,7 @@ GameObject:
   - component: {fileID: 488483518}
   - component: {fileID: 488483520}
   - component: {fileID: 488483519}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3732,7 +3732,7 @@ GameObject:
   - component: {fileID: 522148644}
   - component: {fileID: 522148643}
   - component: {fileID: 522148642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 831143586}
   - component: {fileID: 831143588}
   - component: {fileID: 831143587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6356,7 +6356,7 @@ GameObject:
   - component: {fileID: 1258426372}
   - component: {fileID: 1258426371}
   - component: {fileID: 1258426370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EngineScanButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6883,7 +6883,7 @@ GameObject:
   - component: {fileID: 1412017638}
   - component: {fileID: 1412017637}
   - component: {fileID: 1412017636}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftDoorScanButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7181,7 +7181,7 @@ GameObject:
   - component: {fileID: 1448052712}
   - component: {fileID: 1448052711}
   - component: {fileID: 1448052710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrunkScanButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9821,7 +9821,7 @@ GameObject:
   - component: {fileID: 2048304574}
   - component: {fileID: 2048304576}
   - component: {fileID: 2048304575}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10187,7 +10187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2079116878
 MonoBehaviour:
   m_ObjectHideFlags: 0

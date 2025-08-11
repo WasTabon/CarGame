@@ -137,8 +137,19 @@ public class RadiatorCleaningMiniGame : MonoBehaviour
     public void LoadMainScene()
     {
         Scene mainScene = SceneManager.GetSceneByName("Main");
+        if (!mainScene.isLoaded)
+        {
+            Debug.LogError("Main scene not loaded!");
+            return;
+        }
 
+        // Запоминаем текущую активную сцену (скорее всего _fixScene)
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Активируем Main
         SceneManager.SetActiveScene(mainScene);
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+
+        // Выгружаем текущую (fix) сцену
+        SceneManager.UnloadSceneAsync(currentScene);
     }
 }

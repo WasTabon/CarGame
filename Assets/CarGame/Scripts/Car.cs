@@ -58,7 +58,7 @@ public class Car : MonoBehaviour
             PartType.LeftDoor => 90f,
             PartType.RightDoor => -90f,
             PartType.Engine => -60f,
-            PartType.Trunk => 60f,
+            PartType.Trunk => carType == CarType.Black ? 23f : 60f,
             _ => part.localEulerAngles.x
         };
 

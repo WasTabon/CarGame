@@ -76,7 +76,11 @@ public class CarsController : MonoBehaviour
 
     public void Finish()
     {
-        CameraSwitcheController.Instance.ToggleDefaultCamera();
+        if (!CameraSwitcheController.Instance.IsDefaultActive)
+        {
+            CameraSwitcheController.Instance.ToggleDefaultCamera();
+        }
+
         currentCar.gameObject.GetComponent<Animator>().SetTrigger("GoBack");
         Invoke("SetCarNull", 4f);
     }
@@ -85,7 +89,11 @@ public class CarsController : MonoBehaviour
     {
         currentCar = _tempCar;
         UIController.Instance.ShowCameraButtons();
-        CameraSwitcheController.Instance.ToggleDefaultCamera();
+
+        if (CameraSwitcheController.Instance.IsDefaultActive)
+        {
+            CameraSwitcheController.Instance.ToggleDefaultCamera();
+        }
     }
     private void SetCarNull()
     {

@@ -14,6 +14,7 @@ public class CameraSwitcheController : MonoBehaviour
     private bool _isBlending => brain.IsBlending;
 
     private bool _isDefaultActive = false; // Флаг, на дефолтной ли камере сейчас
+    public bool IsDefaultActive => _isDefaultActive;
 
     private void Awake()
     {
@@ -22,9 +23,9 @@ public class CameraSwitcheController : MonoBehaviour
 
     private void Start()
     {
-        // Включаем дефолтную камеру выключаем остальные
-        SetVirtualCameraActive(!_isDefaultActive);
-        defaultCamera.gameObject.SetActive(_isDefaultActive);
+        _isDefaultActive = true; // по умолчанию дефолтная камера активна
+        defaultCamera.gameObject.SetActive(true);
+        SetVirtualCameraActive(false);
     }
 
     private void SetVirtualCameraActive(bool active)

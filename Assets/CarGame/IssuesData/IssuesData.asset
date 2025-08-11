@@ -16,29 +16,29 @@ MonoBehaviour:
   - issueType: 0
     description: The engine temperature rises quickly due to poor cooling caused
       by debris blocking the radiator.
-    sceneAsset: {fileID: 0}
-    sceneName: 
+    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
+    sceneName: CleanMiniGame
   - issueType: 1
     description: The timing belt is damaged, risking engine misalignment and possible
       breakdown.
-    sceneAsset: {fileID: 0}
-    sceneName: 
+    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
+    sceneName: CleanMiniGame
   - issueType: 2
     description: The window mechanism is stuck or unresponsive, preventing it from
       moving up or down.
-    sceneAsset: {fileID: 0}
-    sceneName: 
+    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
+    sceneName: CleanMiniGame
   - issueType: 3
     description: The door lock is jammed or fails to engage properly, making it hard
       to secure or open the door.
-    sceneAsset: {fileID: 0}
-    sceneName: 
+    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
+    sceneName: CleanMiniGame
   - issueType: 4
     description: The trunk mechanism is stuck, preventing access to the storage compartment
-    sceneAsset: {fileID: 0}
-    sceneName: 
+    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
+    sceneName: CleanMiniGame
   - issueType: 5
     description: "The hydraulic strut can\u2019t hold the trunk open, causing it
       to drop unexpectedly."
-    sceneAsset: {fileID: 0}
-    sceneName: 
+    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
+    sceneName: CleanMiniGame
