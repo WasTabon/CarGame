@@ -27,6 +27,7 @@ public class CarsController : MonoBehaviour
         if (ScenesState.cleanWon)
         {
             ScenesState.cleanWon = false;
+            UIController.Instance._issuePanel.gameObject.SetActive(false);
             UIController.Instance.HideCameraButtons();
             UIController.Instance.ShowFinishButton();
         }

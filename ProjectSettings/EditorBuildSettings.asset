@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CarGame/Scenes/CleanMiniGame.unity
     guid: d401ccfc0207a474b83df10832529144
+  - enabled: 1
+    path: Assets/CarGame/Scenes/FillMiniGame.unity
+    guid: 7c74766f4a7c45d44894ce7f9a7df780
   m_configObjects: {}
