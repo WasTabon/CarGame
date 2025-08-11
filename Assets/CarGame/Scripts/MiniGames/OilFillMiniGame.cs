@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OilFillMiniGame : MonoBehaviour
 {
+    public GameObject finishButton;
+    public GameObject clickButton;
+    
     [Header("UI Elements")]
     public Image fillBar; // Заполняющаяся шкала (Image с типом Filled)
     public Button fillButton; // Кнопка заливки
@@ -66,6 +70,28 @@ public class OilFillMiniGame : MonoBehaviour
         isFilling = false;
         Debug.Log(success ? "Success! Oil filled correctly." : "Failed! Oil level incorrect.");
         OnMiniGameEnded?.Invoke(success);
-        // Можно здесь запускать анимации успеха/неудачи или закрывать мини-игру
+
+        if (success)
+        {
+            ScenesState.fillWon = true;
+            clickButton.SetActive(false);
+            finishButton.SetActive(true);
+        }
+    }
+    
+    public void LoadMainScene()
+    {
+        Scene mainScene = SceneManager.GetSceneByName("Main");
+        if (!mainScene.isLoaded)
+        {
+            Debug.LogError("Main scene not loaded!");
+            return;
+        }
+        
+        Scene currentScene = SceneManager.GetActiveScene();
+        
+        SceneManager.SetActiveScene(mainScene);
+        
+        SceneManager.UnloadSceneAsync(currentScene);
     }
 }

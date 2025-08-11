@@ -21,8 +21,8 @@ MonoBehaviour:
   - issueType: 1
     description: The timing belt is damaged, risking engine misalignment and possible
       breakdown.
-    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
-    sceneName: CleanMiniGame
+    sceneAsset: {fileID: 102900000, guid: 7c74766f4a7c45d44894ce7f9a7df780, type: 3}
+    sceneName: FillMiniGame
   - issueType: 2
     description: The window mechanism is stuck or unresponsive, preventing it from
       moving up or down.
