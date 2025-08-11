@@ -31,4 +31,9 @@ public class CarsController : MonoBehaviour
                 break;
         }
     }
+    public void CloseElement()
+    {
+        currentCar.ClosePart();
+    }
+    
 }

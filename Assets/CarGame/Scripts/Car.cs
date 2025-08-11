@@ -34,6 +34,12 @@ public class Car : MonoBehaviour
 
     public Transform openedPart;
 
+    private void Start()
+    {
+        OnPartOpen += UIController.Instance.SetCloseButton;
+        OnPartClose += UIController.Instance.SetOpenButton;
+    }
+
     public void OpenPart(PartType partType)
     {
         Transform part = partType switch
@@ -60,6 +66,14 @@ public class Car : MonoBehaviour
         part.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.OutBack);
         openedPart = part;
         OnPartOpen?.Invoke();
+    }
+
+    public void ClosePart()
+    {
+        Vector3 targetRotation = openedPart.localEulerAngles;
+        targetRotation.x = 0f;
+        openedPart.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.OutBack);
+        OnPartClose?.Invoke();
     }
 
 }
