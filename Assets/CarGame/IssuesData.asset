@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b42b84fe60428b945a7e15b9ca53a586, type: 3}
+  m_Name: IssuesData
+  m_EditorClassIdentifier: 
+  issueScenes:
+  - issueType: 0
+    description: The engine temperature rises quickly due to poor cooling caused
+      by debris blocking the radiator.
+    sceneAsset: {fileID: 0}
+    sceneName: 
+  - issueType: 1
+    description: The timing belt is damaged, risking engine misalignment and possible
+      breakdown.
+    sceneAsset: {fileID: 0}
+    sceneName: 
+  - issueType: 2
+    description: The window mechanism is stuck or unresponsive, preventing it from
+      moving up or down.
+    sceneAsset: {fileID: 0}
+    sceneName: 
+  - issueType: 3
+    description: The door lock is jammed or fails to engage properly, making it hard
+      to secure or open the door.
+    sceneAsset: {fileID: 0}
+    sceneName: 
+  - issueType: 4
+    description: The trunk mechanism is stuck, preventing access to the storage compartment
+    sceneAsset: {fileID: 0}
+    sceneName: 
+  - issueType: 5
+    description: "The hydraulic strut can\u2019t hold the trunk open, causing it
+      to drop unexpectedly."
+    sceneAsset: {fileID: 0}
+    sceneName: 

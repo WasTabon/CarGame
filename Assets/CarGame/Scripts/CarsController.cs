@@ -35,5 +35,37 @@ public class CarsController : MonoBehaviour
     {
         currentCar.ClosePart();
     }
-    
+
+    public void ScanElement()
+    {
+        int index = CameraSwitcheController.Instance.CurrentIndex;
+
+        switch (index)
+        {
+            case 0:
+                if (currentCar.IssueType == IssueType.EngineOverheat || 
+                    currentCar.IssueType == IssueType.EngineBelt)
+                {
+                    Debug.Log("Issue Found");
+                }
+                break;
+
+            case 1:
+            case 3: 
+                if (currentCar.IssueType == IssueType.DoorWindow || 
+                    currentCar.IssueType == IssueType.DoorLock)
+                {
+                    Debug.Log("Issue Found");
+                }
+                break;
+
+            case 2:
+                if (currentCar.IssueType == IssueType.TrunkLock || 
+                    currentCar.IssueType == IssueType.TrunkBroken)
+                {
+                    Debug.Log("Issue Found");
+                }
+                break;
+        }
+    }
 }

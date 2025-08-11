@@ -34,6 +34,8 @@ public class Car : MonoBehaviour
 
     public Transform openedPart;
 
+    public IssueType IssueType;
+
     private void Start()
     {
         OnPartOpen += UIController.Instance.SetCloseButton;
