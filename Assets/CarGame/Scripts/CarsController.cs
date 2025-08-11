@@ -46,7 +46,11 @@ public class CarsController : MonoBehaviour
                 if (currentCar.IssueType == IssueType.EngineOverheat || 
                     currentCar.IssueType == IssueType.EngineBelt)
                 {
-                    Debug.Log("Issue Found");
+                    UIController.Instance.ShowIssue();
+                }
+                else
+                {
+                    UIController.Instance.ShowNoIssue();
                 }
                 break;
 
@@ -55,7 +59,11 @@ public class CarsController : MonoBehaviour
                 if (currentCar.IssueType == IssueType.DoorWindow || 
                     currentCar.IssueType == IssueType.DoorLock)
                 {
-                    Debug.Log("Issue Found");
+                    UIController.Instance.ShowIssue();
+                }
+                else
+                {
+                    UIController.Instance.ShowNoIssue();
                 }
                 break;
 
@@ -63,7 +71,11 @@ public class CarsController : MonoBehaviour
                 if (currentCar.IssueType == IssueType.TrunkLock || 
                     currentCar.IssueType == IssueType.TrunkBroken)
                 {
-                    Debug.Log("Issue Found");
+                    UIController.Instance.ShowIssue();
+                }
+                else
+                {
+                    UIController.Instance.ShowNoIssue();
                 }
                 break;
         }

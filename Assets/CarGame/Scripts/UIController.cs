@@ -7,6 +7,8 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
+    public IssuesData issuesData;
+    
     public GameObject _noIssuesPanel;
     public GameObject _issuePanel;
 
@@ -89,7 +91,7 @@ public class UIController : MonoBehaviour
         };
     }
     
-    public void ShowIssue(IssuesData issuesData)
+    public void ShowIssue()
     {
         var issue = issuesData.issueScenes
             .Find(x => x.issueType == CarsController.Instance.currentCar.IssueType);
@@ -103,6 +105,11 @@ public class UIController : MonoBehaviour
         {
             descriptionText.text = "Описание не найдено";
         }
+    }
+
+    public void ShowNoIssue()
+    {
+        _noIssuesPanel.gameObject.SetActive(true);
     }
     
     public void LoadFixScene()
