@@ -19,7 +19,7 @@ public class CarsController : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("ManageCars", 0f, 5f);
+        InvokeRepeating("ManageCars", 0f, 6f);
     }
 
     private void Update()
@@ -60,7 +60,7 @@ public class CarsController : MonoBehaviour
         if (currentCar == null)
         {
             int randomCar = Random.Range(0, _cars.Length);
-
+            
             Car car = _cars[randomCar];
             
             IssueType randomIssue = (IssueType)Random.Range(0, System.Enum.GetValues(typeof(IssueType)).Length);

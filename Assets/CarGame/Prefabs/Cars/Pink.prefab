@@ -1890,11 +1890,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carType: 1
-  _openSpeed: 0
+  _openSpeed: 0.5
   _leftDoor: {fileID: 7040960404874299214}
   _rightDoor: {fileID: 5809159032230471067}
   _engine: {fileID: 198672287706529480}
   _trunk: {fileID: 3943516561771913022}
+  openedPart: {fileID: 0}
+  IssueType: 0
 --- !u!1 &4173201478313273113
 GameObject:
   m_ObjectHideFlags: 0
