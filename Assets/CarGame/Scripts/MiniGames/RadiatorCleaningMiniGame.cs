@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RadiatorCleaningMiniGame : MonoBehaviour
 {
+    public GameObject button;
+    
     [Header("Settings")]
     public int totalSpots = 10;             // Кол-во пятен грязи
 
@@ -18,6 +20,8 @@ public class RadiatorCleaningMiniGame : MonoBehaviour
 
     void Start()
     {
+        ScenesState.cleanWon = false;
+        
         StartGame();
     }
 
@@ -122,7 +126,19 @@ public class RadiatorCleaningMiniGame : MonoBehaviour
 
     void GameOver(bool success)
     {
+        ScenesState.cleanWon = true;
+        
         isPlaying = false;
         statusText.text = success ? "Cleaned!" : "";
+        
+        button.SetActive(true);
+    }
+
+    public void LoadMainScene()
+    {
+        Scene mainScene = SceneManager.GetSceneByName("Main");
+
+        SceneManager.SetActiveScene(mainScene);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
     }
 }
