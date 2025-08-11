@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
     public GameObject _noIssuesPanel;
     public GameObject _issuePanel;
 
+    public RectTransform finishButton;
+
     public TextMeshProUGUI descriptionText;
     
     public RectTransform _openButton;
@@ -41,8 +43,24 @@ public class UIController : MonoBehaviour
         _leftDoorScanButton.localScale = Vector3.zero;
         _rightDoorScanButton.localScale = Vector3.zero;
         _trunkScanButton.localScale = Vector3.zero;
+
+        finishButton.localScale = Vector3.zero;
+        
+        HideCameraButtons();
     }
 
+    public void ShowFinishButton()
+    {
+        finishButton.DOScale(Vector3.one, 0.5f)
+            .SetEase(Ease.InOutBack);
+    }
+
+    public void HideFinishButton()
+    {
+        finishButton.DOScale(Vector3.zero, 0.5f)
+            .SetEase(Ease.InOutBack);
+    }
+    
     public void SetCloseButton(PartType partType)
     {
         _lastOpenedPartButton = GetPartButton(partType);
@@ -105,6 +123,31 @@ public class UIController : MonoBehaviour
         {
             descriptionText.text = "Описание не найдено";
         }
+    }
+
+    public void HideCameraButtons()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(_nextButton.DOScale(Vector3.zero, 0.5f)
+            .SetEase(Ease.InOutBack));
+        sequence.Join(_previousButton.DOScale(Vector3.zero, 0.5f)
+            .SetEase(Ease.InOutBack));
+        sequence.Join(_openButton.DOScale(Vector3.zero, 0.5f)
+            .SetEase(Ease.InOutBack));
+        sequence.Join(_closeButton.DOScale(Vector3.zero, 0.5f)
+            .SetEase(Ease.InOutBack));
+    }
+    public void ShowCameraButtons()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(_nextButton.DOScale(Vector3.one, 0.5f)
+            .SetEase(Ease.InOutBack));
+        sequence.Join(_previousButton.DOScale(Vector3.one, 0.5f)
+            .SetEase(Ease.InOutBack));
+        sequence.Join(_openButton.DOScale(Vector3.one, 0.5f)
+            .SetEase(Ease.InOutBack));
+        sequence.Join(_closeButton.DOScale(Vector3.zero, 0.5f)
+            .SetEase(Ease.InOutBack));
     }
 
     public void ShowNoIssue()
