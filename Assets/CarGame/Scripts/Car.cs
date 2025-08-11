@@ -20,7 +20,7 @@ public enum PartType
 
 public class Car : MonoBehaviour
 {
-    public event Action OnPartOpen;
+    public event Action<PartType> OnPartOpen;
     public event Action OnPartClose;
     
     public CarType carType;
@@ -65,7 +65,7 @@ public class Car : MonoBehaviour
 
         part.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.OutBack);
         openedPart = part;
-        OnPartOpen?.Invoke();
+        OnPartOpen?.Invoke(partType);
     }
 
     public void ClosePart()
