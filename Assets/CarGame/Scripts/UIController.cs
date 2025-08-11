@@ -1,10 +1,16 @@
-using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+
+    public GameObject _noIssuesPanel;
+    public GameObject _issuePanel;
+
+    public TextMeshProUGUI descriptionText;
     
     public RectTransform _openButton;
     public RectTransform _closeButton;
@@ -17,6 +23,8 @@ public class UIController : MonoBehaviour
     public RectTransform _trunkScanButton;
     
     private RectTransform _lastOpenedPartButton;
+
+    private string _fixScene;
 
     private void Awake()
     {
@@ -79,5 +87,27 @@ public class UIController : MonoBehaviour
             PartType.Trunk => _trunkScanButton,
             _ => null
         };
+    }
+    
+    public void ShowIssue(IssuesData issuesData)
+    {
+        var issue = issuesData.issueScenes
+            .Find(x => x.issueType == CarsController.Instance.currentCar.IssueType);
+
+        if (issue != null)
+        {
+            descriptionText.text = issue.description;
+            _fixScene = issue.sceneName;
+        }
+        else
+        {
+            descriptionText.text = "Описание не найдено";
+        }
+    }
+    
+    public void LoadFixScene()
+    {
+        SceneManager.LoadScene(_fixScene, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(_fixScene));
     }
 }
