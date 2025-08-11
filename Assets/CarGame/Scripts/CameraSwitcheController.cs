@@ -27,6 +27,8 @@ public class CameraSwitcheController : MonoBehaviour
     {
         if (_isBlending) return;
 
+        CarsController.Instance.CloseElement();
+        
         virtualCameras[_currentIndex].gameObject.SetActive(false);
         _currentIndex = (_currentIndex + 1) % virtualCameras.Length;
         virtualCameras[_currentIndex].gameObject.SetActive(true);
@@ -36,6 +38,8 @@ public class CameraSwitcheController : MonoBehaviour
     {
         if (_isBlending) return;
 
+        CarsController.Instance.CloseElement();
+        
         virtualCameras[_currentIndex].gameObject.SetActive(false);
         _currentIndex = (_currentIndex - 1 + virtualCameras.Length) % virtualCameras.Length;
         virtualCameras[_currentIndex].gameObject.SetActive(true);

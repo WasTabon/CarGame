@@ -72,7 +72,7 @@ public class Car : MonoBehaviour
     {
         Vector3 targetRotation = openedPart.localEulerAngles;
         targetRotation.x = 0f;
-        openedPart.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.OutBack);
+        openedPart.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.InBack);
         OnPartClose?.Invoke();
     }
 
