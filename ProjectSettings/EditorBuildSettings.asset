@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CarGame/Scenes/WindowMiniGame.unity
     guid: 40c07ccf570a56045ad0ff5c11f41095
+  - enabled: 1
+    path: Assets/CarGame/Scenes/TrunkLockMiniGame.unity
+    guid: d94dd8196235f44479d4c899e8a3893f
   m_configObjects: {}
