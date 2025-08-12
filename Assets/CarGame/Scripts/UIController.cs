@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
@@ -7,6 +8,12 @@ using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+
+    public TextMeshProUGUI moneyText1;
+    public TextMeshProUGUI moneyText2;
+    
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI priceText;
 
     public IssuesData issuesData;
     
@@ -53,6 +60,22 @@ public class UIController : MonoBehaviour
         finishButton.localScale = Vector3.zero;
         
         HideCameraButtons();
+    }
+
+    private void Update()
+    {
+        moneyText1.text = WalletController.Instance.Money.ToString();
+        moneyText2.text = WalletController.Instance.Money.ToString();
+
+        levelText.text = $"Level: {WalletController.Instance.CurrentLevel}";
+        
+        int currentLevel = WalletController.Instance.CurrentLevel;
+        int price = 0;
+        if (currentLevel < WalletController.Instance.shopLevels.Count)
+        {
+            price = WalletController.Instance.shopLevels[currentLevel].price;
+        }
+        priceText.text = $"Price: {price}";
     }
 
     public void ShowFinishButton()
