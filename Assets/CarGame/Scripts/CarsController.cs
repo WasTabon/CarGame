@@ -40,6 +40,8 @@ public class CarsController : MonoBehaviour
             UIController.Instance.HideCameraButtons();
             UIController.Instance.ShowFinishButton();
         }
+        
+        UIController.Instance._openButton.gameObject.SetActive(currentCar != null);
     }
 
     public void OpenElement()
@@ -95,6 +97,7 @@ public class CarsController : MonoBehaviour
         }
 
         currentCar.gameObject.GetComponent<Animator>().SetTrigger("GoBack");
+        currentCar = null;
         Invoke("SetCarNull", 4f);
     }
     
