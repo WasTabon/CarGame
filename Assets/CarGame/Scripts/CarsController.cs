@@ -39,6 +39,7 @@ public class CarsController : MonoBehaviour
             UIController.Instance._issuePanel.gameObject.SetActive(false);
             UIController.Instance.HideCameraButtons();
             UIController.Instance.ShowFinishButton();
+            WalletController.Instance.Money += 300;
         }
         
         UIController.Instance._openButton.gameObject.SetActive(currentCar != null);

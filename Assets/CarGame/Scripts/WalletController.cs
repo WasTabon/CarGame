@@ -64,9 +64,9 @@ public class WalletController : MonoBehaviour
         }
     }
 
-    public bool TryPurchaseCurrentLevel()
+    public void TryPurchaseCurrentLevel()
     {
-        if (CurrentLevel >= shopLevels.Count) return false; // Нет уровней
+        if (CurrentLevel >= shopLevels.Count) return; // Нет уровней
         ShopLevel level = shopLevels[CurrentLevel];
 
         if (Money >= level.price)
@@ -88,13 +88,11 @@ public class WalletController : MonoBehaviour
             CurrentLevel++;
             PlayerPrefs.SetInt(LevelKey, CurrentLevel);
             PlayerPrefs.Save();
-
-            return true;
+            
         }
         else
         {
             Debug.Log("Недостаточно денег!");
-            return false;
         }
     }
 

@@ -939,8 +939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea90425613eb4d14382b2efc31cc960c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishButton: {fileID: 571501230}
-  clickButton: {fileID: 1515173210}
+  finishButton: {fileID: 1515173210}
+  clickButton: {fileID: 2076001806}
   fillBar: {fileID: 2076001808}
   fillButton: {fileID: 571501232}
   fillSpeed: 1
