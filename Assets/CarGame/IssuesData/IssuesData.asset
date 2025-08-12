@@ -26,19 +26,19 @@ MonoBehaviour:
   - issueType: 2
     description: The window mechanism is stuck or unresponsive, preventing it from
       moving up or down.
-    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
-    sceneName: CleanMiniGame
+    sceneAsset: {fileID: 102900000, guid: 40c07ccf570a56045ad0ff5c11f41095, type: 3}
+    sceneName: WindowMiniGame
   - issueType: 3
     description: The door lock is jammed or fails to engage properly, making it hard
       to secure or open the door.
-    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
-    sceneName: CleanMiniGame
+    sceneAsset: {fileID: 102900000, guid: 2461e892456a62d40a5d5e361ce1b5ef, type: 3}
+    sceneName: LockMiniGame
   - issueType: 4
     description: The trunk mechanism is stuck, preventing access to the storage compartment
-    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
-    sceneName: CleanMiniGame
+    sceneAsset: {fileID: 102900000, guid: d94dd8196235f44479d4c899e8a3893f, type: 3}
+    sceneName: TrunkLockMiniGame
   - issueType: 5
     description: "The hydraulic strut can\u2019t hold the trunk open, causing it
       to drop unexpectedly."
-    sceneAsset: {fileID: 102900000, guid: d401ccfc0207a474b83df10832529144, type: 3}
-    sceneName: CleanMiniGame
+    sceneAsset: {fileID: 102900000, guid: d94dd8196235f44479d4c899e8a3893f, type: 3}
+    sceneName: TrunkLockMiniGame

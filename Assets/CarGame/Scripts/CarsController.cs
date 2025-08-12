@@ -26,9 +26,13 @@ public class CarsController : MonoBehaviour
 
     private void Update()
     {
-        if (ScenesState.cleanWon)
+        if (ScenesState.cleanWon || ScenesState.fillWon || ScenesState.lockpickWon || ScenesState.trunkWon || ScenesState.windowWon)
         {
             ScenesState.cleanWon = false;
+            ScenesState.fillWon = false;
+            ScenesState.lockpickWon = false;
+            ScenesState.trunkWon = false;
+            ScenesState.windowWon = false;
             UIController.Instance._issuePanel.gameObject.SetActive(false);
             UIController.Instance.HideCameraButtons();
             UIController.Instance.ShowFinishButton();

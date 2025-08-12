@@ -98,6 +98,12 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void CloseOpenButton()
+    {
+        _openButton.DOScale(Vector3.zero, 0.5f)
+            .SetEase(Ease.OutBack);
+    }
+
     private RectTransform GetPartButton(PartType partType)
     {
         return partType switch
