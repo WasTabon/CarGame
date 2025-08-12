@@ -20,6 +20,8 @@ public class CarsController : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("ManageCars", 0f, 6f);
+        
+        // доробити міні ігри
     }
 
     private void Update()
