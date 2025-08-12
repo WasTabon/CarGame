@@ -53,17 +53,30 @@ public class Car : MonoBehaviour
             _ => null
         };
 
-        float targetX = partType switch
-        {
-            PartType.LeftDoor => 90f,
-            PartType.RightDoor => -90f,
-            PartType.Engine => -60f,
-            PartType.Trunk => carType == CarType.Black ? 23f : 60f,
-            _ => part.localEulerAngles.x
-        };
-
         Vector3 targetRotation = part.localEulerAngles;
-        targetRotation.x = targetX;
+
+        if (partType == PartType.LeftDoor)
+        {
+            if (carType == CarType.Yellow)
+                targetRotation.x = 90f;
+            else
+                targetRotation.y = 85f;
+        }
+        else if (partType == PartType.RightDoor)
+        {
+            if (carType == CarType.Yellow)
+                targetRotation.x = -90f;
+            else
+                targetRotation.y = -85f;
+        }
+        else if (partType == PartType.Engine)
+        {
+            targetRotation.x = -60f;
+        }
+        else if (partType == PartType.Trunk)
+        {
+            targetRotation.x = (carType == CarType.Black) ? 23f : 60f;
+        }
 
         part.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.OutBack);
         openedPart = part;
@@ -77,6 +90,8 @@ public class Car : MonoBehaviour
         
         Vector3 targetRotation = openedPart.localEulerAngles;
         targetRotation.x = 0f;
+        if (carType != CarType.Yellow)
+            targetRotation.y = 0f;
         openedPart.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.InBack);
         OnPartClose?.Invoke();
     }
