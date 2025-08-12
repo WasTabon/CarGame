@@ -126,8 +126,6 @@ public class RadiatorCleaningMiniGame : MonoBehaviour
 
     void GameOver(bool success)
     {
-        ScenesState.cleanWon = true;
-        
         isPlaying = false;
         statusText.text = success ? "Cleaned!" : "";
         
@@ -146,6 +144,8 @@ public class RadiatorCleaningMiniGame : MonoBehaviour
         // Запоминаем текущую активную сцену (скорее всего _fixScene)
         Scene currentScene = SceneManager.GetActiveScene();
 
+        ScenesState.cleanWon = true;
+        
         // Активируем Main
         SceneManager.SetActiveScene(mainScene);
 

@@ -81,7 +81,6 @@ public class WindowRepairMinigame : MonoBehaviour
         if (success)
         {
             isPlaying = false;
-            ScenesState.windowWon = true;
             
             clickButton.SetActive(false);
             finishButton.SetActive(true);
@@ -99,6 +98,7 @@ public class WindowRepairMinigame : MonoBehaviour
         
         Scene currentScene = SceneManager.GetActiveScene();
         
+        ScenesState.windowWon = true;
         SceneManager.SetActiveScene(mainScene);
         
         SceneManager.UnloadSceneAsync(currentScene);

@@ -226,7 +226,6 @@ public class SpareWheelMinigame : MonoBehaviour
             }
 
             isPlaying = false;
-            ScenesState.trunkWon = true;
             resultText.text = "Spare wheel installed!";
             resultText.color = Color.green;
             finishButton.SetActive(true);
@@ -259,6 +258,7 @@ public class SpareWheelMinigame : MonoBehaviour
         }
 
         Scene currentScene = SceneManager.GetActiveScene();
+        ScenesState.trunkWon = true;
         SceneManager.SetActiveScene(mainScene);
         SceneManager.UnloadSceneAsync(currentScene);
     }

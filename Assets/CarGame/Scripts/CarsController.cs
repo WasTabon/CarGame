@@ -33,6 +33,9 @@ public class CarsController : MonoBehaviour
             ScenesState.lockpickWon = false;
             ScenesState.trunkWon = false;
             ScenesState.windowWon = false;
+            //UIController.Instance.UnloadFixScene();
+            UIController.Instance.mainSceneCanvas.gameObject.SetActive(true);
+            UIController.Instance.mainSceneCamera.gameObject.SetActive(true);
             UIController.Instance._issuePanel.gameObject.SetActive(false);
             UIController.Instance.HideCameraButtons();
             UIController.Instance.ShowFinishButton();

@@ -73,7 +73,6 @@ public class OilFillMiniGame : MonoBehaviour
 
         if (success)
         {
-            ScenesState.fillWon = true;
             clickButton.SetActive(false);
             finishButton.SetActive(true);
         }
@@ -90,6 +89,7 @@ public class OilFillMiniGame : MonoBehaviour
         
         Scene currentScene = SceneManager.GetActiveScene();
         
+        ScenesState.fillWon = true;
         SceneManager.SetActiveScene(mainScene);
         
         SceneManager.UnloadSceneAsync(currentScene);

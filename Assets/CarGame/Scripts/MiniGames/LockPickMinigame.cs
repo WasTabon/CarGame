@@ -122,8 +122,7 @@ public class LockPickMinigame : MonoBehaviour
     {
         if (success)
         {
-            isPlaying = false;
-            ScenesState.lockpickWon = true; // как в WindowRepairMinigame
+            isPlaying = false; 
             resultText.text = "Unlocked!";
             resultText.color = Color.green;
 
@@ -142,6 +141,7 @@ public class LockPickMinigame : MonoBehaviour
         }
 
         Scene currentScene = SceneManager.GetActiveScene();
+        ScenesState.lockpickWon = true;
         SceneManager.SetActiveScene(mainScene);
         SceneManager.UnloadSceneAsync(currentScene);
     }

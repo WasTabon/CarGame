@@ -9076,6 +9076,7 @@ MonoBehaviour:
   _leftDoorScanButton: {fileID: 1412017635}
   _rightDoorScanButton: {fileID: 113901679}
   _trunkScanButton: {fileID: 1448052709}
+  mainSceneCanvas: {fileID: 2141136561}
 --- !u!1 &1842002120
 GameObject:
   m_ObjectHideFlags: 0

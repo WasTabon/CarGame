@@ -27,6 +27,9 @@ public class UIController : MonoBehaviour
     public RectTransform _rightDoorScanButton;
     public RectTransform _trunkScanButton;
     
+    public Camera mainSceneCamera;
+    public Canvas mainSceneCanvas;
+    
     private RectTransform _lastOpenedPartButton;
 
     private string _fixScene;
@@ -34,6 +37,8 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
+        mainSceneCamera = Camera.main;
     }
 
     private void Start()
@@ -177,16 +182,42 @@ public class UIController : MonoBehaviour
         {
             yield return null;
         }
-
+        
         Scene loadedScene = SceneManager.GetSceneByName(sceneName);
 
         if (loadedScene.IsValid() && loadedScene.isLoaded)
         {
+            mainSceneCanvas.gameObject.SetActive(false);
+            mainSceneCamera.gameObject.SetActive(false);
             SceneManager.SetActiveScene(loadedScene);
         }
         else
         {
             Debug.LogError($"Scene {sceneName} failed to load or is invalid");
         }
+    }
+
+// Метод для обратного включения UI и камеры главной сцены после выгрузки фикс-сцены
+    public void RestoreMainSceneUI()
+    {
+        if (mainSceneCamera != null) mainSceneCamera.enabled = true;
+        if (mainSceneCanvas != null) mainSceneCanvas.gameObject.SetActive(true);
+    }
+    public void UnloadFixScene()
+    {
+        StartCoroutine(UnloadFixSceneCoroutine());
+    }
+
+    private IEnumerator UnloadFixSceneCoroutine()
+    {
+        AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(_fixScene);
+
+        while (!asyncUnload.isDone)
+        {
+            yield return null;
+        }
+    
+        // Восстанавливаем UI и камеру главной сцены
+        RestoreMainSceneUI();
     }
 }
