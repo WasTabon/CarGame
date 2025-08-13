@@ -43,6 +43,7 @@ public class CarsController : MonoBehaviour
         }
         
         UIController.Instance._openButton.gameObject.SetActive(currentCar != null);
+        UIController.Instance.diagnosticButton.gameObject.SetActive(currentCar != null);
     }
 
     public void OpenElement()
@@ -113,6 +114,7 @@ public class CarsController : MonoBehaviour
         }
 
         DiagnosticController.Instance.ShowProblem();
+        UIController.Instance.diagnosticPanel.gameObject.SetActive(true);
     }
     private void SetCarNull()
     {

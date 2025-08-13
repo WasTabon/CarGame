@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class Problem
@@ -14,15 +15,24 @@ public class Problem
 public class DiagnosticController : MonoBehaviour
 {
     public static DiagnosticController Instance;
+
+    [SerializeField] private GameObject _notProblemPanel;
+    [SerializeField] private GameObject _problemPanel;
+    [SerializeField] private GameObject _noAttemptsPanel;
     
     [SerializeField] private TextMeshProUGUI _symptomText1;
     [SerializeField] private TextMeshProUGUI _symptomText2;
     [SerializeField] private TextMeshProUGUI _symptomText3;
+    [SerializeField] private TextMeshProUGUI _attempsText;
 
     [SerializeField] private Transform symptomParent;
     private TextMeshProUGUI[] symptomTexts;
     
     [SerializeField] private List<Problem> problems = new List<Problem>();
+    
+    public int attempts;
+
+    private string currentProblem;
 
     [ContextMenu("Заполнить список проблем")]
     private void FillProblems()
@@ -62,9 +72,29 @@ public class DiagnosticController : MonoBehaviour
             .ToArray();
     }
 
+    private void Update()
+    {
+        _attempsText.text = $"attempts: {attempts}";
+    }
+
     public void HandleProblemClick(string problem)
     {
-        Debug.Log(problem);
+        if (attempts >= 1)
+        {
+            attempts--;
+            if (problem.Equals(currentProblem))
+            {
+                _problemPanel.gameObject.SetActive(true);
+            }
+            else
+            {
+                _notProblemPanel.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            _noAttemptsPanel.gameObject.SetActive(true);
+        }
     }
     
     public void ShowProblem()
@@ -74,6 +104,8 @@ public class DiagnosticController : MonoBehaviour
         Debug.LogWarning("Текущая машина не найдена");
         return;
     }
+
+    attempts = 10;
 
     IssueType issueType = CarsController.Instance.currentCar.IssueType;
 
@@ -135,19 +167,18 @@ public class DiagnosticController : MonoBehaviour
     // Список симптомов для сравнения
     string[] selectedSymptoms = selectedProblem.symptoms;
     
-    Debug.Log($"Найдено текстов (включая отключенные): {symptomTexts.Length}");
+    currentProblem = selectedProblem.problemName;
 
     foreach (var tmp in symptomTexts)
     {
         if (tmp.CompareTag("Symptom"))
         {
-            Debug.Log("Текст найден и имеет тег Symptom");
             tmp.color = Array.Exists(selectedSymptoms, s => s == tmp.text)
                 ? Color.green
                 : Color.red;
         }
     }
-
+    
     Debug.Log($"Выбрана проблема: {selectedProblem.problemName}");
 }
 }

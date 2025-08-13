@@ -9,6 +9,9 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
+    public RectTransform diagnosticButton;
+    public RectTransform diagnosticPanel;
+    
     public TextMeshProUGUI moneyText1;
     public TextMeshProUGUI moneyText2;
     
