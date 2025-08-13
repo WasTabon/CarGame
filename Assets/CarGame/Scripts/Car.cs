@@ -10,6 +10,7 @@ public enum CarType
     Purple,
     Red
 }
+
 public enum PartType
 {
     LeftDoor,
@@ -27,19 +28,55 @@ public class Car : MonoBehaviour
 
     [SerializeField] private float _openSpeed;
     
+    [Header("Wheels Settings")]
+    [SerializeField] private Transform[] _wheels; 
+    [SerializeField] private float _wheelSpinSpeed = 360f; // градусов в секунду
+    [SerializeField] private float _movementThreshold = 0.01f; // порог чувствительности
+
+    [Header("Car Parts")]
     [SerializeField] private Transform _leftDoor;
     [SerializeField] private Transform _rightDoor;
     [SerializeField] private Transform _engine;
     [SerializeField] private Transform _trunk;
 
     public Transform openedPart;
-
     public IssueType IssueType;
+
+    private Vector3 _lastPosition;
+    private float _direction = 1f; // 1 = вперед, -1 = назад
 
     private void Start()
     {
         OnPartOpen += UIController.Instance.SetCloseButton;
         OnPartClose += UIController.Instance.SetOpenButton;
+
+        _lastPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        Vector3 delta = transform.position - _lastPosition;
+        float distance = delta.magnitude;
+
+        if (distance > _movementThreshold)
+        {
+            // Определяем направление (вперёд или назад)
+            _direction = Vector3.Dot(delta.normalized, transform.forward) >= 0 ? 1f : -1f;
+
+            RotateWheels(_direction * -1);
+        }
+
+        _lastPosition = transform.position;
+    }
+
+    private void RotateWheels(float direction)
+    {
+        float rotationAmount = _wheelSpinSpeed * direction * Time.deltaTime;
+
+        foreach (var wheel in _wheels)
+        {
+            wheel.Rotate(rotationAmount, 0f, 0f, Space.Self);
+        }
     }
 
     public void OpenPart(PartType partType)
@@ -92,8 +129,8 @@ public class Car : MonoBehaviour
         targetRotation.x = 0f;
         if (carType != CarType.Yellow)
             targetRotation.y = 0f;
+
         openedPart.DOLocalRotate(targetRotation, _openSpeed).SetEase(Ease.InBack);
         OnPartClose?.Invoke();
     }
-
 }

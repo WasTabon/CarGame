@@ -2859,6 +2859,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carType: 4
   _openSpeed: 0.5
+  _wheels:
+  - {fileID: 8449039926369390231}
+  - {fileID: 2130314658182025277}
+  - {fileID: 963528386753552607}
+  - {fileID: 1337749206198937441}
+  _wheelSpinSpeed: 360
+  _movementThreshold: 0.01
+  _frontWheels:
+  - {fileID: 8449039926369390231}
+  - {fileID: 963528386753552607}
+  _rearWheels:
+  - {fileID: 2130314658182025277}
+  - {fileID: 1337749206198937441}
+  _maxSteerAngle: 30
   _leftDoor: {fileID: 3874775959458326853}
   _rightDoor: {fileID: 3189898678024104756}
   _engine: {fileID: 3765001060971180873}

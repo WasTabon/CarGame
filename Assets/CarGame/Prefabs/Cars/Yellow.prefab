@@ -608,11 +608,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carType: 0
   _openSpeed: 0.5
+  _wheels:
+  - {fileID: 5659818770630026701}
+  - {fileID: 8409607372223590362}
+  - {fileID: 391714580748965983}
+  - {fileID: 890928497854869601}
+  _wheelSpinSpeed: 360
+  _movementThreshold: 0.01
+  _frontWheels:
+  - {fileID: 5659818770630026701}
+  - {fileID: 8409607372223590362}
+  _rearWheels:
+  - {fileID: 391714580748965983}
+  - {fileID: 890928497854869601}
+  _maxSteerAngle: 30
   _leftDoor: {fileID: 8604250911127109970}
   _rightDoor: {fileID: 2423027174807721555}
   _engine: {fileID: 5241685256623686198}
   _trunk: {fileID: 7033434376090401045}
   openedPart: {fileID: 0}
+  IssueType: 0
 --- !u!1 &4158685616047013221
 GameObject:
   m_ObjectHideFlags: 0
