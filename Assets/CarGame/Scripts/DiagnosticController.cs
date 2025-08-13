@@ -62,6 +62,11 @@ public class DiagnosticController : MonoBehaviour
             .ToArray();
     }
 
+    public void HandleProblemClick(string problem)
+    {
+        Debug.Log(problem);
+    }
+    
     public void ShowProblem()
 {
     if (CarsController.Instance?.currentCar == null)
@@ -145,5 +150,4 @@ public class DiagnosticController : MonoBehaviour
 
     Debug.Log($"Выбрана проблема: {selectedProblem.problemName}");
 }
-
 }
