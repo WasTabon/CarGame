@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -11,10 +13,15 @@ public class Problem
 
 public class DiagnosticController : MonoBehaviour
 {
+    public static DiagnosticController Instance;
+    
     [SerializeField] private TextMeshProUGUI _symptomText1;
     [SerializeField] private TextMeshProUGUI _symptomText2;
     [SerializeField] private TextMeshProUGUI _symptomText3;
 
+    [SerializeField] private Transform symptomParent;
+    private TextMeshProUGUI[] symptomTexts;
+    
     [SerializeField] private List<Problem> problems = new List<Problem>();
 
     [ContextMenu("Заполнить список проблем")]
@@ -45,18 +52,98 @@ public class DiagnosticController : MonoBehaviour
         problems.Add(new Problem { problemName = "Faulty trunk release button", symptoms = new[] { "Electrical glitch", "Warning light on dashboard", "Mechanism stuck/jammed" } });
         problems.Add(new Problem { problemName = "Stuck spare tire compartment", symptoms = new[] { "Mechanism stuck/jammed", "Difficulty opening/closing", "Visible physical damage" } });
     }
-    
-    public void ShowProblem(string problemName)
-    {
-        var problem = problems.Find(p => p.problemName == problemName);
-        if (problem == null)
-        {
-            Debug.LogWarning($"Проблема '{problemName}' не найдена");
-            return;
-        }
 
-        _symptomText1.text = problem.symptoms[0];
-        _symptomText2.text = problem.symptoms[1];
-        _symptomText3.text = problem.symptoms[2];
+    private void Awake()
+    {
+        Instance = this;
+        
+        symptomTexts = symptomParent.GetComponentsInChildren<TextMeshProUGUI>(true)
+            .Where(t => t.CompareTag("Symptom"))
+            .ToArray();
     }
+
+    public void ShowProblem()
+{
+    if (CarsController.Instance?.currentCar == null)
+    {
+        Debug.LogWarning("Текущая машина не найдена");
+        return;
+    }
+
+    IssueType issueType = CarsController.Instance.currentCar.IssueType;
+
+    // Фильтрация проблем по типу
+    List<Problem> filteredProblems = new List<Problem>();
+
+    switch (issueType)
+    {
+        case IssueType.EngineOverheat:
+        case IssueType.EngineBelt:
+            filteredProblems.AddRange(problems.FindAll(p =>
+                p.problemName == "Radiator clogged" ||
+                p.problemName == "Worn timing belt" ||
+                p.problemName == "Faulty thermostat" ||
+                p.problemName == "Cracked cylinder head" ||
+                p.problemName == "Dirty air filter" ||
+                p.problemName == "Fuel injector failure" ||
+                p.problemName == "Spark plug damage" ||
+                p.problemName == "Turbocharger failure"));
+            break;
+
+        case IssueType.DoorWindow:
+        case IssueType.DoorLock:
+            filteredProblems.AddRange(problems.FindAll(p =>
+                p.problemName == "Power window motor burned out" ||
+                p.problemName == "Window track jammed" ||
+                p.problemName == "Broken door lock actuator" ||
+                p.problemName == "Rusted hinge" ||
+                p.problemName == "Wiring short in door controls" ||
+                p.problemName == "Handle mechanism broken"));
+            break;
+
+        case IssueType.TrunkLock:
+        case IssueType.TrunkBroken:
+            filteredProblems.AddRange(problems.FindAll(p =>
+                p.problemName == "Trunk latch stuck" ||
+                p.problemName == "Broken hydraulic lift support" ||
+                p.problemName == "Damaged trunk lock cylinder" ||
+                p.problemName == "Rusted trunk hinge" ||
+                p.problemName == "Faulty trunk release button" ||
+                p.problemName == "Stuck spare tire compartment"));
+            break;
+    }
+
+    if (filteredProblems.Count == 0)
+    {
+        Debug.LogWarning($"Нет проблем для типа {issueType}");
+        return;
+    }
+
+    // Случайная проблема
+    Problem selectedProblem = filteredProblems[UnityEngine.Random.Range(0, filteredProblems.Count)];
+
+    // Устанавливаем симптомы
+    _symptomText1.text = selectedProblem.symptoms[0];
+    _symptomText2.text = selectedProblem.symptoms[1];
+    _symptomText3.text = selectedProblem.symptoms[2];
+
+    // Список симптомов для сравнения
+    string[] selectedSymptoms = selectedProblem.symptoms;
+    
+    Debug.Log($"Найдено текстов (включая отключенные): {symptomTexts.Length}");
+
+    foreach (var tmp in symptomTexts)
+    {
+        if (tmp.CompareTag("Symptom"))
+        {
+            Debug.Log("Текст найден и имеет тег Symptom");
+            tmp.color = Array.Exists(selectedSymptoms, s => s == tmp.text)
+                ? Color.green
+                : Color.red;
+        }
+    }
+
+    Debug.Log($"Выбрана проблема: {selectedProblem.problemName}");
+}
+
 }

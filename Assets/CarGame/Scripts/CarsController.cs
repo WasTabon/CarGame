@@ -111,6 +111,8 @@ public class CarsController : MonoBehaviour
         {
             CameraSwitcheController.Instance.ToggleDefaultCamera();
         }
+
+        DiagnosticController.Instance.ShowProblem();
     }
     private void SetCarNull()
     {
