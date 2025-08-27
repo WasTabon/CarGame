@@ -5,6 +5,8 @@ public class WalletController : MonoBehaviour
 {
     public static WalletController Instance { get; private set; }
 
+    public GameObject panel;
+    
     private const string MoneyKey = "Money";
     private const string LevelKey = "ShopLevel";
     private const string PurchasedObjectsKey = "PurchasedObjects";
@@ -92,6 +94,7 @@ public class WalletController : MonoBehaviour
         }
         else
         {
+            panel.SetActive(true);
             Debug.Log("Недостаточно денег!");
         }
     }
